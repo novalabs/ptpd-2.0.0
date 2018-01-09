@@ -25,7 +25,6 @@
 #include "lwip/udp.h"
 #include "lwip/igmp.h"
 #include "lwip/arch.h"
-#include "lwip/timers.h"
 
 #ifdef __cplusplus
 extern "C" {
