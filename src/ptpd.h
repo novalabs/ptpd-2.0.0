@@ -26,6 +26,9 @@
 #include "lwip/igmp.h"
 #include "lwip/arch.h"
 
+/* The following is not declared it lwip/sys.h... */
+err_t sys_mbox_trypostI(sys_mbox_t *mbox, void *msg);
+
 #ifdef __cplusplus
 extern "C" {
 #endif
