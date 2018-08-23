@@ -229,8 +229,8 @@ bool netInit(NetPath *netPath, PtpClock *ptpClock)
 	igmp_joingroup(&interfaceAddr, (ip_addr_t *) &netAddr);
 
 	/* Multicast send only on specified interface. */
-	netPath->eventPcb->multicast_ip.addr = netPath->multicastAddr;
-	netPath->generalPcb->multicast_ip.addr = netPath->multicastAddr;
+	netPath->eventPcb->mcast_ip4.addr = netPath->multicastAddr;
+	netPath->generalPcb->mcast_ip4.addr = netPath->multicastAddr;
 
 	/* Establish the appropriate UDP bindings/connections for events. */
 	udp_recv(netPath->eventPcb, netRecvEventCallback, netPath);
