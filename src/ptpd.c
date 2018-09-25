@@ -2,7 +2,13 @@
 
 #include "ptpd.h"
 
-#define PTPD_THREAD_PRIO    (tskIDLE_PRIORITY + 2)
+#ifndef PTPD_THREAD_STACK_SIZE
+#define PTPD_THREAD_STACK_SIZE (512)
+#endif
+
+#ifndef PTPD_THREAD_PRIORITY
+#define PTPD_THREAD_PRIORITY (NORMALPRIO - 2)
+#endif
 
 static sys_mbox_t ptp_alert_queue;
 
@@ -106,7 +112,7 @@ void ptpd_init(void)
   }
 
 	// Create the PTP daemon thread.
-	sys_thread_new("PTPD", ptpd_thread, NULL, DEFAULT_THREAD_STACKSIZE * 2, NORMALPRIO - 2);
+	sys_thread_new("PTPD", ptpd_thread, NULL, PTPD_THREAD_STACK_SIZE, PTPD_THREAD_PRIORITY);
 }
 
 
